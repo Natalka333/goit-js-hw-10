@@ -1,0 +1,18 @@
+.breed-select {
+  height: auto;
+  width: 150px;
+}
+.loader {
+  font-size: 18px;
+  color: blue;
+}
+
+.error {
+  font-size: 18px;
+  color: red;
+}
+
+.img {
+  width: auto;
+  height: auto;
+}
