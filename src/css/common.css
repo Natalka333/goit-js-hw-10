@@ -16,3 +16,7 @@
   width: auto;
   height: auto;
 }
+
+.unvisible {
+  display: none;
+}
