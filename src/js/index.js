@@ -2,6 +2,7 @@ import { fetchBreeds, fetchCatByBreed } from './catsApi';
 import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
 import 'slim-select/dist/slimselect.css';
+import { renderBreed } from './renderBreed';
 
 const selectBreedEl = document.querySelector('.breed-select');
 const loadEl = document.querySelector('.loader');
@@ -27,14 +28,22 @@ fetchBreeds()
     );
   });
 
-// selectBreedEl.addEventListener('change');
+selectBreedEl.addEventListener('change', handleChangeSelect);
 
-fetchCatByBreed().then(breed => {
-  const murkupPicture = `<img class="cat-picture" src=${breed.cfa_url} alt=${breed.id}>`;
-  const murkupDescript = `<h2 class=cat-info>${breed.breeds[0].name}</h2>
-<p class="cat-desc">${breed.breeds[0].description}</p>
-<p class="cat-temp">${breed.breeds[0].temperament}</p>
-<p class="cat-origin">${breed.breeds[0].origin}</p>`;
-  catInfoEl.insertAdjacentHTML('beforeend', murkupPicture);
-  catInfoEl.insertAdjacentHTML('beforeend', murkupDescript);
-});
+function handleChangeSelect(event) {
+  // catInfoEl.innerHTML = '';
+  const breedId = event.target.value;
+  console.log('breedId', breedId);
+
+  fetchCatByBreed(breedId)
+    .then(breed => renderBreed(breed))
+    .then(breed => console.log(breed))
+    .catch(error => {
+      Notiflix.Notify.failure(
+        'Oops! Something went wrong! Try reloading the page!'
+      );
+    });
+  new SlimSelect({
+    select: '#selectElement',
+  });
+}
