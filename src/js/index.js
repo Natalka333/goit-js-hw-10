@@ -31,7 +31,6 @@ fetchBreeds()
 selectBreedEl.addEventListener('change', handleChangeSelect);
 
 function handleChangeSelect(event) {
-  // catInfoEl.innerHTML = '';
   const breedId = event.target.value;
   console.log('breedId', breedId);
 
@@ -43,7 +42,4 @@ function handleChangeSelect(event) {
         'Oops! Something went wrong! Try reloading the page!'
       );
     });
-  new SlimSelect({
-    select: '#selectElement',
-  });
 }
