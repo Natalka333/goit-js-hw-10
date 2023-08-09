@@ -6,7 +6,7 @@ import { renderBreed } from './renderBreed';
 
 const selectBreedEl = document.querySelector('.breed-select');
 const loadEl = document.querySelector('.loader');
-const catInfoEl = document.querySelector('cat-info');
+const catInfoEl = document.querySelector('.cat-info');
 
 fetchBreeds()
   .then(breeds => {
@@ -32,20 +32,23 @@ selectBreedEl.addEventListener('change', handleChangeSelect);
 
 function handleChangeSelect(event) {
   const breedId = event.target.value;
-  console.log('breedId', breedId);
+  // console.log('breedId', breedId);
 
   fetchCatByBreed(breedId)
     .then(({ url, id, name, description, origin, temperament }) => {
+      console.log('breedId', breedId);
       catInfoEl.innerHTML = '';
       loadEl.classList.remove('unvisible');
       catInfoEl.insertAdjacentHTML(
         'beforeend',
         renderBreed({ url, id, name, description, origin, temperament })
       );
+			console.log('$');
+			loadEl.classList.add('unvisible');
     })
-    .then(({ url, id, name, description, origin, temperament }) =>
-      console.log({ url, id, name, description, origin, temperament })
-    )
+    // .then(({ url, id, name, description, origin, temperament }) =>
+    //   console.log({ url, id, name, description, origin, temperament })
+    // )
     .catch(error => {
       console.log(error);
       catInfoEl.innerHTML = '';

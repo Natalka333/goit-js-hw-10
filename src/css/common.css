@@ -12,11 +12,15 @@
   color: red;
 }
 
-.img {
-  width: auto;
+.cat-picture {
+  width: 300px;
   height: auto;
 }
 
 .unvisible {
   display: none;
+}
+
+.cat-container {
+  display: flex;
 }

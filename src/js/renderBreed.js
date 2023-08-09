@@ -4,8 +4,8 @@ const renderBreed = ({ url, id, name, description, origin, temperament }) => {
 	<h2 class=cat-info>${name}</h2>
   <p class="cat-desc">${description}</p>
   <p class="cat-temp">${temperament}</p>
-  <p class="cat-origin">${origin}</p><
-    /div></div >`;
+  <p class="cat-origin">${origin}</p></div>
+	</div >`;
 };
 
 export { renderBreed };
