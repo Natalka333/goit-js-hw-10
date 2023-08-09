@@ -14,5 +14,18 @@ export function fetchCatByBreed(breedId) {
     .then(response => {
       return response.data;
       // console.log(response.data);
+    })
+    .then(([data]) => {
+      if (data.length === 0) {
+        throw new Error();
+      }
+      return {
+        url: data.url,
+        id: data.id,
+        name: data.breeds[0].name,
+        description: data.breeds[0].description,
+        origin: data.breeds[0].origin,
+        temperament: data.breeds[0].temperament,
+      };
     });
 }

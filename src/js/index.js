@@ -18,7 +18,7 @@ fetchBreeds()
     console.log(breeds);
     selectBreedEl.insertAdjacentHTML('beforeend', optionsEl);
     new SlimSelect({
-      select: '#selectElement',
+      select: '.breed-select',
     });
   })
   .catch(error => {
@@ -35,11 +35,20 @@ function handleChangeSelect(event) {
   console.log('breedId', breedId);
 
   fetchCatByBreed(breedId)
-    .then(breed => renderBreed(breed))
-    .then(breed => console.log(breed))
-    .catch(error => {
-      Notiflix.Notify.failure(
-        'Oops! Something went wrong! Try reloading the page!'
+    .then(({ url, id, name, description, origin, temperament }) => {
+      catInfoEl.innerHTML = '';
+      loadEl.classList.remove('unvisible');
+      catInfoEl.insertAdjacentHTML(
+        'beforeend',
+        renderBreed({ url, id, name, description, origin, temperament })
       );
+    })
+    .then(({ url, id, name, description, origin, temperament }) =>
+      console.log({ url, id, name, description, origin, temperament })
+    )
+    .catch(error => {
+      console.log(error);
+      catInfoEl.innerHTML = '';
+      Notiflix.Notify.failure('There is not information about this cat');
     });
 }
