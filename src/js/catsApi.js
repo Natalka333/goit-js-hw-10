@@ -19,7 +19,7 @@ export function fetchCatByBreed(breedId) {
       if (data.length === 0) {
         throw new Error();
       }
-      console.log(data);
+      // console.log(data);
       return {
         url: data.url,
         id: data.id,

@@ -15,7 +15,7 @@ fetchBreeds()
         return `<option value='${id}'>${name}</option>`;
       })
       .join('');
-    console.log(breeds);
+    // console.log(breeds);
     selectBreedEl.insertAdjacentHTML('beforeend', optionsEl);
     new SlimSelect({
       select: '.breed-select',
@@ -32,7 +32,6 @@ selectBreedEl.addEventListener('change', handleChangeSelect);
 
 function handleChangeSelect(event) {
   const breedId = event.target.value;
-  // console.log('breedId', breedId);
 
   fetchCatByBreed(breedId)
     .then(({ url, id, name, description, origin, temperament }) => {
@@ -43,12 +42,8 @@ function handleChangeSelect(event) {
         'beforeend',
         renderBreed({ url, id, name, description, origin, temperament })
       );
-			console.log('$');
-			loadEl.classList.add('unvisible');
+      loadEl.classList.add('unvisible');
     })
-    // .then(({ url, id, name, description, origin, temperament }) =>
-    //   console.log({ url, id, name, description, origin, temperament })
-    // )
     .catch(error => {
       console.log(error);
       catInfoEl.innerHTML = '';
