@@ -1,6 +1,6 @@
 import { catInfoEl } from './index';
 const renderBreed = breed => {
-  const murkupPicture = `<img class="cat-picture" src=${breed.cfa_url} alt=${breed.id}>`;
+  const murkupPicture = `<img class="cat-picture" src="${breed.url}" alt="${breed.id}">`;
   //   const murkupDescript = `<h2 class=cat-info>${breed.breeds[0].name}</h2>
   // <p class="cat-desc">${breed.breeds[0].description}</p>
   // <p class="cat-temp">${breed.breeds[0].temperament}</p>
