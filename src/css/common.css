@@ -29,12 +29,12 @@ body {
 .loader {
   width: 48px;
   height: 48px;
-  border: 3px solid #db5e0b;
+  border: 3px dotted #db5e0b;
   border-radius: 50%;
   box-sizing: border-box;
   display: inline-block;
   position: relative;
-  animation: rotation 2000ms linear infinite;
+  animation: rotation 2s linear infinite;
 }
 
 @keyframes rotation {

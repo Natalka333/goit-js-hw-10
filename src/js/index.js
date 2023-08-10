@@ -32,6 +32,7 @@ const renderFetchBreeds = () => {
     })
     .finally(() => {
       loadEl.classList.add('unvisible');
+      selectBreedEl.classList.remove('unvisible');
     });
 };
 selectBreedEl.addEventListener('change', handleChangeSelect);
