@@ -9,7 +9,7 @@ const loadEl = document.querySelector('.loader');
 const catInfoEl = document.querySelector('.cat-info');
 
 const renderFetchBreeds = () => {
-  loadEl.classList.add('unvisible');
+  loadEl.classList.remove('unvisible');
 
   fetchBreeds()
     .then(breeds => {
@@ -41,7 +41,7 @@ renderFetchBreeds();
 
 function handleChangeSelect(event) {
   const breedId = event.target.value;
-
+  loadEl.classList.remove('unvisible');
   fetchCatByBreed(breedId)
     .then(({ url, id, name, description, origin, temperament }) => {
       console.log('breedId', breedId);
@@ -51,7 +51,6 @@ function handleChangeSelect(event) {
         'beforeend',
         renderBreed({ url, id, name, description, origin, temperament })
       );
-      // loadEl.classList.add('unvisible');
     })
     .catch(error => {
       console.log(error);
