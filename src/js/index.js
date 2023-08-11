@@ -51,7 +51,7 @@ function handleChangeSelect(event) {
         'beforeend',
         renderBreed({ url, id, name, description, origin, temperament })
       );
-      loadEl.classList.add('unvisible');
+      // loadEl.classList.add('unvisible');
     })
     .catch(error => {
       console.log(error);

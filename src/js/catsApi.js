@@ -9,6 +9,7 @@ export function fetchBreeds() {
 }
 
 export function fetchCatByBreed(breedId) {
+  loadEl.classList.remove('unvisible');
   return axios
     .get(`${BASE_URL}/images/search?breed_ids=${breedId}`)
     .then(response => {
